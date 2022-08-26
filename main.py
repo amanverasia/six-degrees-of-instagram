@@ -49,12 +49,7 @@ def finding_first_degree_info(username):
     print('Finding Followers...')
     followers_of_main_account = find_followers(username)
     print('Followers found,', len(followers_of_main_account))
-    if(len(followers_of_main_account)>150):
-        print('Taking a break')
-        time.sleep(300)
-    elif((len(followers_of_main_account)+len(following_of_main_account))>200):
-        print('Taking a break')
-        time.sleep(300)
+    
 	#Combing the list
     friends_of_main_account = list(set(following_of_main_account) & set(followers_of_main_account))
     print(f'You have {len(friends_of_main_account)} on your account.')
@@ -64,6 +59,13 @@ def finding_first_degree_info(username):
     for i in friends_of_main_account:
       fh.write(i+'\n')
     fh.close()
+    #to make sure the bot doesn't overdo
+    if(len(followers_of_main_account)>150):
+        print('Taking a break')
+        time.sleep(300)
+    elif((len(followers_of_main_account)+len(following_of_main_account))>200):
+        print('Taking a break')
+        time.sleep(300)
 
 def finding_second_degree_info(username):
     #Finding Following
@@ -79,13 +81,7 @@ def finding_second_degree_info(username):
     print('Finding Followers...')
     followers_of_side_account = find_followers(username)
     print('Followers found,', len(followers_of_side_account))
-    #to make sure the bot doesn't overdo
-    if(len(followers_of_side_account)>150):
-        print('Taking a break')
-        time.sleep(300)
-    elif((len(followers_of_side_account)+len(following_of_side_account))>200):
-        print('Taking a break')
-        time.sleep(300)
+    
 
 	#Combing the list
     friends_of_side_account = list(set(following_of_side_account) & set(followers_of_side_account))
@@ -96,6 +92,13 @@ def finding_second_degree_info(username):
     for i in friends_of_side_account:
       fh.write(i+'\n')
     fh.close()
+    #to make sure the bot doesn't overdo
+    if(len(followers_of_side_account)>150):
+        print('Taking a break')
+        time.sleep(300)
+    elif((len(followers_of_side_account)+len(following_of_side_account))>200):
+        print('Taking a break')
+        time.sleep(300)
 
 #checking if the database folder exists
 if 'database' not in os.listdir():
